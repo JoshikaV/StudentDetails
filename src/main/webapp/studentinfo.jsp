@@ -1,7 +1,65 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*" %>
+<!DOCTYPE html>
 <html>
-<head><title>Student Info</title></head>
+<head>
+    <title>Student Info Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+        
+         form {
+            background-color: #fff;
+            width:100;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            box-sizing:border-box;
+        }
+
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing:border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            margin-top: 20px;
+            cursor: pointer;
+            box-sizing:border-box;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            box-sizing:border-box;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
 <body>
 
 <h2>Student Info Form</h2>
@@ -27,9 +85,9 @@
         try {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/student", "postgres", "Littlestar@18");
+                "jdbc:postgresql://localhost:5432/student", "postgres", "password");
 
-            // Step 1: Create table if not exists
+           
             String createTableSQL = "CREATE TABLE IF NOT EXISTS registeration (" +
                                     "student_id INTEGER PRIMARY KEY, " +
                                     "name VARCHAR(100) NOT NULL, " +
@@ -38,7 +96,7 @@
             stmt = conn.createStatement();
             stmt.executeUpdate(createTableSQL);
 
-            // Step 2: Insert data
+           
             String sql = "INSERT INTO information (student_id, name, address, program) VALUES (?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, Integer.parseInt(id));
