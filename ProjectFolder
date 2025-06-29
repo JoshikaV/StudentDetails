@@ -1,0 +1,12 @@
+StudentInformation/
+├── src/
+│   └── main/
+│       ├── java/                   <-- Your servlet files
+│       └── webapp/
+│           ├── studentinfo.jsp     <-- Your JSP form
+│           └── WEB-INF/
+│               ├── web.xml         <-- Servlet mapping
+│               └── lib/
+│                   └── postgresql.jar
+├── build/                          <-- Can ignore
+├── README.md
